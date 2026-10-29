@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-500: #d97706;
+  --color-gold-600: #b45309;
+  --color-gold-700: #92400e;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --border-subtle: #e2e8f0;
+  --border-focus: #d97706;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-gold: #b45309;
+  --accent-gold-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --shadow-gold: 0 4px 14px rgba(217, 119, 6, 0.25);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Glass panel fallback */
+.glass-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Modal architecture: Header fixed, Body scrollable, Footer fixed */
+.modal-scrollable-body {
+  position: relative;
+  overflow-y: auto;
+  flex: 1 1 0%;
+  min-height: 0;
+}
+
+/* Fixed/Sticky footers inside modal body */
+.modal-scrollable-body > form > div:last-child:has(button),
+.modal-scrollable-body > div > div:last-child:has(button),
+.modal-footer-fixed {
+  position: sticky;
+  bottom: -1.5rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  margin-bottom: -1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid #e2e8f0;
+  z-index: 20;
+  margin-top: 1.5rem;
+}
+
+/* Hide number input spinners */
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button,
+input[type="number"].no-spinner::-webkit-inner-spin-button,
+input[type="number"].no-spinner::-webkit-outer-spin-button,
+input[type="number"].no-spinner:hover::-webkit-inner-spin-button,
+input[type="number"].no-spinner:hover::-webkit-outer-spin-button,
+input[type="number"].no-spinner:focus::-webkit-inner-spin-button,
+input[type="number"].no-spinner:focus::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.no-spinner,
+input[type="number"].no-spinner {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
